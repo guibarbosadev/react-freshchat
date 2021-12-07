@@ -100,9 +100,11 @@ class FreshChat extends React.Component {
     }
 
     if (window.fcWidget) {
-      window.fcWidget.init(settings)
-      if (settings.onInit) {
-        settings.onInit()
+      if (!window.fcWidget.isInitialized()){
+        window.fcWidget.init(settings)
+        if (settings.onInit) {
+          settings.onInit()
+        }
       }
     } else {
       this.lazyInit(settings)
